@@ -1,0 +1,20 @@
+name: SonarQube Analysis
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  sonar-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: SonarQube Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: "http://sonarqube-server:9000"
+        run: |
+          sonar-scanner -Dsonar.projectKey=akaunting -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN
+

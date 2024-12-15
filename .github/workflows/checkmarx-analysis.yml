@@ -1,0 +1,19 @@
+name: Checkmarx Scan
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  checkmarx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Checkmarx Scan
+        env:
+          CHECKMARX_TOKEN: ${{ secrets.CHECKMARX_TOKEN }}
+        run: |
+          curl -X POST -H "Authorization: Bearer ${CHECKMARX_TOKEN}" -F "file=@." https://checkmarx-endpoint/scan
+

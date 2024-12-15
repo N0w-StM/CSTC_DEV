@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akaunting-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: akaunting
+  template:
+    metadata:
+      labels:
+        app: akaunting
+    spec:
+      containers:
+        - name: akaunting
+          image: your-dockerhub-username/akaunting:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: akaunting-secrets
+

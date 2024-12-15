@@ -1,0 +1,21 @@
+akaunting-ci-cd/
+├── Dockerfiles/
+│   ├── Dockerfile.jenkins
+│   ├── Dockerfile.sonarqube
+│   ├── Dockerfile.akaunting
+│
+├── k8s/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── sealed-secret.yaml
+│
+├── .github/
+│   └── workflows/
+│       ├── ci-cd.yml
+│       ├── sonar-analysis.yml
+│       └── checkmarx-analysis.yml
+│
+├── Jenkinsfile
+├── sonar-project.properties
+├── README.md
+
